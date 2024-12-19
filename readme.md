@@ -96,7 +96,7 @@ Please see the following implementations for additional examples and test vector
 ## Feedback & Reviews
 
 - [Pay to Script CHIP Issues](https://github.com/bitjson/bch-p2s/issues)
-- [`CHIP 2024-12 OP_EVAL` - Bitcoin Cash Research](https://bitcoincashresearch.org/t/) // TODO
+- [`CHIP 2024-12 P2S: Pay to Script` - Bitcoin Cash Research](https://bitcoincashresearch.org/t/chip-2024-12-p2s-pay-to-script/1451)
 
 ## Changelog
 
