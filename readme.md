@@ -39,6 +39,8 @@ The existing output standardness validation requiring spendable outputs to matc
 1. **Length check**: the locking bytecode of standard outputs must have a length less than or equal to `201`, the maximum length of currently standard bare multi-signature (BMS) outputs. See [Rationale: Selection of Maximum Locking Bytecode Length](#selection-of-maximum-locking-bytecode-length).
 2. **Data-carrier validation**: locking bytecode which exceeds the length check but matches the existing data-carrier pattern (`OP_RETURN`) is standard if accepted by the existing data-carrier validation (the cumulative 223-byte limit across all transaction outputs).
 
+Note that UTXO standardness checks must also retain the additional allowance for bare multi-signature patterns; these remain nonstandard to create beyond the existing 3-key limit, but UTXOs exceeding the limit remain spendable in standard transactions (matching the existing behavior for these cases).
+
 ### Token Commitment Length
 
 The limit on maximum length of token commitments is raised from `40` bytes to `128` bytes. See [Rationale: Selection of Maximum Token Commitment Length](#selection-of-maximum-token-commitment-length).
