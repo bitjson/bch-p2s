@@ -6,8 +6,8 @@
         Maintainer: Jason Dreyzehner
         Status: Draft
         Initial Publication Date: 2024-12-12
-        Latest Revision Date: 2024-12-12
-        Version: 1.0.0
+        Latest Revision Date: 2024-05-02
+        Version: 1.0.1
 
 ## Summary
 
@@ -87,10 +87,16 @@ Note that payment and wallet protocols can still be designed to enable cross-wal
 
 While block explorer and other visualization software may represent P2S contracts by rendering their encoded bytecode in hexadecimal or another format, **typical wallets should never support payments to arbitrary/unknown P2S contracts via such representations**. Instead, wallets should utilize a template system, collaborative signing protocol, or other high-level scheme to communicate and authenticate contracts prior to locking funds in new outputs using those contracts.
 
+## Test Vectors
+
+This proposal includes [a suite of functional tests and benchmarks](./vmb_tests/) to verify the performance of all operations within virtual machine implementations.
+
 ## Implementations
 
 Please see the following implementations for additional examples and test vectors:
 
+- C++:
+  - [Bitcoin Cash Node (BCHN)](https://bitcoincashnode.org/) – A professional, miner-friendly node that solves practical problems for Bitcoin Cash. [Merge Request !1937](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1937).
 - **JavaScript/TypeScript**:
   - [Libauth](https://github.com/bitauth/libauth) – An ultra-lightweight, zero-dependency JavaScript library for Bitcoin Cash. [Branch `next`](https://github.com/bitauth/libauth/tree/next).
   - [Bitauth IDE](https://github.com/bitauth/bitauth-ide) – An online IDE for bitcoin (cash) contracts. [Branch `next`](https://github.com/bitauth/bitauth-ide/tree/next).
@@ -104,6 +110,10 @@ Please see the following implementations for additional examples and test vector
 
 This section summarizes the evolution of this document.
 
+- **v1.0.1 – 2025-05-02**
+  - Note that multisig standardness behavior is not modified ([#1](https://github.com/bitjson/bch-p2s/issues/1))
+  - Commit latest test vectors
+  - Link to BCHN implementation
 - **v1.0.0 – 2024-12-12**
   - Initial publication
 
