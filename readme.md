@@ -6,8 +6,8 @@
         Maintainer: Jason Dreyzehner
         Status: Draft
         Initial Publication Date: 2024-12-12
-        Latest Revision Date: 2024-05-02
-        Version: 1.0.1
+        Latest Revision Date: 2024-05-15
+        Version: 1.0.2
 
 ## Summary
 
@@ -36,56 +36,74 @@ Standard output validation is relaxed to allow Pay to Script (P2S) outputs, and 
 
 The existing output standardness validation requiring spendable outputs to match a known pattern (<abbr title="Pay to Public Key">P2PK</abbr>, <abbr title="Pay to Public Key Hash">P2PKH</abbr>, <abbr title="Pay to Script Hash (20 bytes)">P2SH20</abbr>, <abbr title="Pay to Script Hash (32 bytes)">P2SH32</abbr>, <abbr title="Data-Carrier Outputs (A.K.A. OP_RETURN Outputs)">OP_RETURN</abbr>, or <abbr title="Bare Multi-Signature">BMS</abbr>) is replaced by:
 
-1. **Length check**: the locking bytecode of standard outputs must have a length less than or equal to `201`, the maximum length of currently standard bare multi-signature (BMS) outputs. See [Rationale: Selection of Maximum Locking Bytecode Length](#selection-of-maximum-locking-bytecode-length).
+1. **Length check**: the locking bytecode of standard outputs must have a length less than or equal to `201`, the maximum length of currently standard bare multi-signature (BMS) outputs. See [Rationale: Selection of Maximum Locking Bytecode Length](rationale.md#selection-of-maximum-locking-bytecode-length).
 2. **Data-carrier validation**: locking bytecode which exceeds the length check but matches the existing data-carrier pattern (`OP_RETURN`) is standard if accepted by the existing data-carrier validation (the cumulative 223-byte limit across all transaction outputs).
+
+#### Retained Allowance for Multi-Signature Spends
 
 Note that UTXO standardness checks must also retain the additional allowance for bare multi-signature patterns; these remain nonstandard to create beyond the existing 3-key limit, but UTXOs exceeding the limit remain spendable in standard transactions (matching the existing behavior for these cases).
 
 ### Token Commitment Length
 
-The limit on maximum length of token commitments is raised from `40` bytes to `128` bytes. See [Rationale: Selection of Maximum Token Commitment Length](#selection-of-maximum-token-commitment-length).
+The limit on maximum length of token commitments is raised from `40` bytes to `128` bytes. See [Rationale: Selection of Maximum Token Commitment Length](rationale.md#selection-of-maximum-token-commitment-length).
 
 ### Unlocking Bytecode Length
 
-The limit on maximum standard input bytecode length (A.K.A. `MAX_TX_IN_SCRIPT_SIG_SIZE` – 1,650 bytes) is removed such that the maximum unlocking bytecode length is equal for both standard and consensus validation: 10,000 bytes (A.K.A. `MAX_SCRIPT_SIZE`). See [Rationale: Unification of Standard and Consensus Unlocking Bytecode Length](#unification-of-standard-and-consensus-unlocking-bytecode-length).
+The limit on maximum standard input bytecode length (A.K.A. `MAX_TX_IN_SCRIPT_SIG_SIZE` – 1,650 bytes) is removed such that the maximum unlocking bytecode length is equal for both standard and consensus validation: 10,000 bytes (A.K.A. `MAX_SCRIPT_SIZE`). See [Rationale: Unification of Standard and Consensus Unlocking Bytecode Length](rationale.md#unification-of-standard-and-consensus-unlocking-bytecode-length).
 
 ## Rationale
 
-This section documents design decisions made in this specification.
+- [Appendix: Rationale &rarr;](rationale.md#rationale)
+  - [Relationship Between the Modified Limits](rationale.md#relationship-between-the-modified-limits)
+  - [Selection of Maximum Locking Bytecode Length](rationale.md#selection-of-maximum-locking-bytecode-length)
+  - [Selection of Maximum Token Commitment Length](rationale.md#selection-of-maximum-token-commitment-length)
+  - [Unification of Standard and Consensus Unlocking Bytecode Length](rationale.md#unification-of-standard-and-consensus-unlocking-bytecode-length)
+  - [Exclusion of P2S CashAddress Format](rationale.md#exclusion-of-p2s-cashaddress-format)
+  - [Non-Impact on Data-Carrier Outputs (A.K.A. OP_RETURN Outputs)](rationale.md#non-impact-on-data-carrier-outputs-aka-op_return-outputs)
+  - [Non-Reliance on Miscalculated 220-Byte Limit](#non-reliance-on-miscalculated-220-byte-limit)
 
-### Selection of Maximum Locking Bytecode Length
+## Evaluations of Alternatives
 
-This proposal simplifies validation of output standardness by eliminating the existing, complex, bytecode pattern-matching behavior and replacing it primarily by a length check: standard outputs following activation of this proposal must have bytecode no longer than the longest of the currently-standard patterns.
+- [Appendix: Evaluations of Alternatives &rarr;](alternatives.md#evaluation-of-alternatives)
+  - [Locking Bytecode Standardness Alternatives](alternatives.md#locking-bytecode-standardness-alternatives)
+    - [Status Quo: Pattern Matching](alternatives.md#status-quo-pattern-matching)
+    - [Alternative: Reduced Locking Bytecode Standardness Limit](alternatives.md#alternative-reduced-locking-bytecode-standardness-limit)
+    - [Alternative: Increased Locking Bytecode Standardness Limit](alternatives.md#alternative-increased-locking-bytecode-standardness-limit)
+      - [Alternative: 220-Byte Locking Bytecode Standardness Limit](alternatives.md#alternative-220-byte-locking-bytecode-standardness-limit)
+      - [Alternative: 10,000-Byte Locking Bytecode Limit](alternatives.md#alternative-10000-byte-locking-bytecode-limit)
+      - [Alternative: 100,000-Byte Locking Bytecode Limit](alternatives.md#alternative-100000-byte-locking-bytecode-limit)
+  - [Token Commitment Length Alternatives](alternatives.md#token-commitment-length-alternatives)
+    - [Status Quo: 40-Byte Token Commitments](alternatives.md#status-quo-40-byte-token-commitments)
+    - [Alternative: 201-Byte Token Commitments](alternatives.md#alternative-201-byte-token-commitments)
+    - [Alternative: 220-Byte Token Commitments](alternatives.md#alternative-220-byte-token-commitments)
+    - [Alternative 10,000-Byte Token Commitments](alternatives.md#alternative-10000-byte-token-commitments)
+    - [Alternative 100,000-Byte Token Commitments](alternatives.md#alternative-100000-byte-token-commitments)
+  - [Unlocking Bytecode Length Alternatives](alternatives.md#unlocking-bytecode-length-alternatives)
+    - [Status Quo: 1,650-Byte Unlocking Bytecode Standardness Limit](alternatives.md#status-quo-1650-byte-unlocking-bytecode-standardness-limit)
+    - [Alternative: 100,000-Byte Unlocking Bytecode Limit](alternatives.md#alternative-100000-byte-unlocking-bytecode-limit)
 
-The longest standard locking bytecode under existing validation rules is an M-of-3 Bare Multi-Signature (BMS) output with uncompressed public keys, requiring 201 bytes.<sup>1</sup>
+## Risk Assessment
 
-1. See VMB test ID `20d42l`.
-
-### Selection of Maximum Token Commitment Length
-
-In the same way that this proposal enables contracts to avoid wrapping contract code in an otherwise unnecessary hash (wasting the byte length of the hash plus stack manipulation bytecode across both setup and usage transactions), this proposal also extends the maximum allowable token commitment length from `40` bytes to `128` bytes, avoiding the same variety of waste within token commitments.
-
-The `128` byte limit is selected to remain below the existing data-carrier limit (`220` bytes), while extending the usefulness of the commitment field (without added waste or complexity from a hash-unwrapping step) for notable use cases: bilinear pairing-based accumulators (e.g. `BLS12-381` KZG commitments require ~48 bytes compressed or ~96 bytes uncompressed), two 64-byte Schnorr signatures, four 32-byte (OP_HASH256, birthday-collision resistant) hashes, or six 20-byte (OP_HASH160) hashes.
-
-### Unification of Standard and Consensus Unlocking Bytecode Length
-
-This proposal eliminates the separate standardness limit for input bytecode length (A.K.A. `MAX_TX_IN_SCRIPT_SIG_SIZE`; 1,650 bytes) such that the existing consensus limit (A.K.A. `MAX_SCRIPT_SIZE`; 10,000 bytes) is enforced for both transaction relay and block validation.
-
-Following the [VM Limits CHIP](https://github.com/bitjson/bch-vm-limits), contract length is no longer relevant to worst-case transaction or block validation performance. As standard transactions can include many inputs – up to the maximum standard transaction byte length (A.K.A. `MAX_STANDARD_TX_SIZE`; 100,000 bytes) – a lower per-input standardness limit offers no additional safety to the network while inconveniencing applications with larger contiguous data requirements.
-
-For example, many zero-knowledge and post-quantum cryptographic systems require proofs larger than 1,650 bytes; with a lower per-input standardness limit, these proofs would need to be broken apart into multiple inputs and/or outputs, requiring the development of unusual standards, significant waste in data manipulation bytecode, and unnecessary contract complexity.
-
-### Exclusion of P2S CashAddress Format
-
-While it is technically possible to define an arbitrary-length CashAddress format for conveying Pay-to-Script "addresses" (though not initially designed for variable-length payloads), **this proposal intentionally excludes such a format to improve wallet ecosystem safety and compatibility**.
-
-Pay to Script Hash (P2SH) already provides a safe, well-established pattern for sharing user-payable contract addresses. Notably, data usage within transactions (and associated mining fee costs) are fixed across all P2SH20 and P2SH32 addresses(respectively), with the receiver responsible for the potentially-variable fees required to spend from P2SH addresses.
-
-On the other hand, Pay to Script (P2S) "addresses" would create significant new risks of loss for many users: it is not guaranteed (or even commonly expected) that funds unexpectedly payed to a P2S contract will remain recoverable. As P2S contracts tend to be most useful in vault, multi-party covenant, and decentralized financial applications, there will often be no counterparty to whom refund requests could even be made. **The non-existence of P2S addresses is instead a useful feature**: developers can intentionally avoid using P2SH in contexts where end-users should not "manually" send payments (e.g. by copying the P2SH address from a block explorer or wallet history), reducing the chance of losses or poor user experiences due to user error.
-
-Note that payment and wallet protocols can still be designed to enable cross-wallet payments to P2S contracts; the exclusion of a simplified "address" format serves only to reduce the risk of losses due to mismatches between user expectations and technical realities.
-
-While block explorer and other visualization software may represent P2S contracts by rendering their encoded bytecode in hexadecimal or another format, **typical wallets should never support payments to arbitrary/unknown P2S contracts via such representations**. Instead, wallets should utilize a template system, collaborative signing protocol, or other high-level scheme to communicate and authenticate contracts prior to locking funds in new outputs using those contracts.
+- [Appendix: Risk Assessment &rarr;](risk-assessment.md#risk-assessment)
+  - [Risks \& Security Considerations](risk-assessment.md#risks--security-considerations)
+    - [User Impact Risks](risk-assessment.md#user-impact-risks)
+      - [Reduced or Equivalent Node Validation Costs](risk-assessment.md#reduced-or-equivalent-node-validation-costs)
+      - [Increased or Equivalent Contract Capabilities](risk-assessment.md#increased-or-equivalent-contract-capabilities)
+    - [Consensus Risks](risk-assessment.md#consensus-risks)
+      - [Full-Transaction Test Vectors](risk-assessment.md#full-transaction-test-vectors)
+      - [Additional Performance Benchmarks](risk-assessment.md#additional-performance-benchmarks)
+      - [`Chipnet` Preview Activation](risk-assessment.md#chipnet-preview-activation)
+    - [Denial-of-Service (DoS) Risks](risk-assessment.md#denial-of-service-dos-risks)
+      - [Node Performance Safety Margin](risk-assessment.md#node-performance-safety-margin)
+    - [Protocol Complexity Risks](risk-assessment.md#protocol-complexity-risks)
+      - [Support for Post-Activation Simplification](risk-assessment.md#support-for-post-activation-simplification)
+      - [Evaluation of Alternatives](risk-assessment.md#evaluation-of-alternatives)
+  - [Upgrade Costs](risk-assessment.md#upgrade-costs)
+    - [Node Upgrade Costs](risk-assessment.md#node-upgrade-costs)
+    - [Ecosystem Upgrade Costs](risk-assessment.md#ecosystem-upgrade-costs)
+  - [Maintenance Costs](risk-assessment.md#maintenance-costs)
+    - [Node Maintenance Costs](risk-assessment.md#node-maintenance-costs)
+    - [Ecosystem Maintenance Costs](risk-assessment.md#ecosystem-maintenance-costs)
 
 ## Test Vectors
 
@@ -101,6 +119,10 @@ Please see the following implementations for additional examples and test vector
   - [Libauth](https://github.com/bitauth/libauth) – An ultra-lightweight, zero-dependency JavaScript library for Bitcoin Cash. [Branch `next`](https://github.com/bitauth/libauth/tree/next).
   - [Bitauth IDE](https://github.com/bitauth/bitauth-ide) – An online IDE for bitcoin (cash) contracts. [Branch `next`](https://github.com/bitauth/bitauth-ide/tree/next).
 
+## Stakeholder Responses & Statements
+
+[Stakeholder Responses & Statements &rarr;](./stakeholders.md)
+
 ## Feedback & Reviews
 
 - [Pay to Script CHIP Issues](https://github.com/bitjson/bch-p2s/issues)
@@ -110,6 +132,11 @@ Please see the following implementations for additional examples and test vector
 
 This section summarizes the evolution of this document.
 
+- **v1.0.2 – 2025-05-15**
+  - Expand [Rationale](./rationale.md)
+  - Add [Evaluation of Alternatives](./alternatives.md)
+  - Add [Risk Assessment](./risk-assessment.md)
+  - Scaffold [Stakeholder Responses & Statements](./stakeholders.md)
 - **v1.0.1 – 2025-05-02**
   - Note that multisig standardness behavior is not modified ([#1](https://github.com/bitjson/bch-p2s/issues/1))
   - Commit latest test vectors
