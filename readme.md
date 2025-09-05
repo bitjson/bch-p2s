@@ -6,8 +6,8 @@
         Maintainer: Jason Dreyzehner
         Status: Draft
         Initial Publication Date: 2024-12-12
-        Latest Revision Date: 2024-05-15
-        Version: 1.0.2
+        Latest Revision Date: 2024-09-05
+        Version: 1.0.3
 
 ## Summary
 
@@ -126,12 +126,15 @@ Please see the following implementations for additional examples and test vector
 ## Feedback & Reviews
 
 - [Pay to Script CHIP Issues](https://github.com/bitjson/bch-p2s/issues)
+- [`Relaxing output standardness` - Bitcoin Cash Research](https://bitcoincashresearch.org/t/relaxing-output-standardness/1391)
 - [`CHIP 2024-12 P2S: Pay to Script` - Bitcoin Cash Research](https://bitcoincashresearch.org/t/chip-2024-12-p2s-pay-to-script/1451)
 
 ## Changelog
 
 This section summarizes the evolution of this document.
 
+- **v1.0.3 – 2025-09-05**
+  - Update VMB tests and benchmarks
 - **v1.0.2 – 2025-05-15**
   - Expand [Rationale](./rationale.md)
   - Add [Evaluation of Alternatives](./alternatives.md)
