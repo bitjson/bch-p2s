@@ -133,7 +133,7 @@ Please see the following implementations for additional examples and test vector
 
 This section summarizes the evolution of this proposal.
 
-- **v1.0.3 – 2025-09-05** ([`c144f03f`](https://github.com/bitjson/bch-p2s/commit/c144f03fe11b6de0e924b2285b355370d0e658b8) – [diff vs. `master`](https://github.com/bitjson/bch-p2s/compare/master...c144f03fe11b6de0e924b2285b355370d0e658b8))
+- **v1.0.3 – 2025-09-05** ([`c144f03f`](https://github.com/bitjson/bch-p2s/commit/c144f03fe11b6de0e924b2285b355370d0e658b8) – [diff vs. `master`](https://github.com/bitjson/bch-p2s/compare/c144f03fe11b6de0e924b2285b355370d0e658b8...master))
   - Update VMB tests and benchmarks
 - **v1.0.2 – 2025-05-15** ([`a8862008`](https://github.com/bitjson/bch-p2s/commit/a8862008fa2d57abf206e98c1fd7032aa46052b4))
   - Expand [Rationale](./rationale.md)
