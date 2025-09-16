@@ -4,10 +4,10 @@
         Type: Standards
         Layer: Consensus
         Maintainer: Jason Dreyzehner
-        Status: Draft
         Initial Publication Date: 2024-12-12
         Latest Revision Date: 2024-09-05
-        Version: 1.0.3
+        Version: 1.0.3 (c144f03f)
+        Status: Frozen for Lock-In
 
 ## Summary
 
@@ -131,20 +131,20 @@ Please see the following implementations for additional examples and test vector
 
 ## Changelog
 
-This section summarizes the evolution of this document.
+This section summarizes the evolution of this proposal.
 
-- **v1.0.3 – 2025-09-05**
+- **v1.0.3 – 2025-09-05** ([`c144f03f`](https://github.com/bitjson/bch-p2s/commit/c144f03fe11b6de0e924b2285b355370d0e658b8) – [diff vs. `master`](https://github.com/bitjson/bch-p2s/compare/master...c144f03fe11b6de0e924b2285b355370d0e658b8))
   - Update VMB tests and benchmarks
-- **v1.0.2 – 2025-05-15**
+- **v1.0.2 – 2025-05-15** ([`a8862008`](https://github.com/bitjson/bch-p2s/commit/a8862008fa2d57abf206e98c1fd7032aa46052b4))
   - Expand [Rationale](./rationale.md)
   - Add [Evaluation of Alternatives](./alternatives.md)
   - Add [Risk Assessment](./risk-assessment.md)
   - Scaffold [Stakeholder Responses & Statements](./stakeholders.md)
-- **v1.0.1 – 2025-05-02**
+- **v1.0.1 – 2025-05-02** ([`3b3ef913`](https://github.com/bitjson/bch-p2s/commit/3b3ef91394ad4980bec63b471f6940e6cf17ef02))
   - Note that multisig standardness behavior is not modified ([#1](https://github.com/bitjson/bch-p2s/issues/1))
   - Commit latest test vectors
   - Link to BCHN implementation
-- **v1.0.0 – 2024-12-12**
+- **v1.0.0 – 2024-12-12** ([`e6f01ab1`](https://github.com/bitjson/bch-p2s/commit/e6f01ab1266969e4d8ddec82615517b4864b23dc))
   - Initial publication
 
 ## Copyright
