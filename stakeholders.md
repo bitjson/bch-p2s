@@ -251,7 +251,7 @@ Responses from open source libraries, indexers, educational resources, and commu
 | [slp.dev](https://slp.dev/)                                               |   `v1.0.3`    |         |            |         |   ⏳    |
 | [SmartBCH](https://smartbch.org/)                                         |   `v1.0.3`    |         |            |         |   ⏳    |
 | [Spedn](https://spedn.pl/)                                                |   `v1.0.3`    |         |            |         |   ⏳    |
-| [Stamps.Cash](https://stamps.cash/)                                       |   `v1.0.3`    |         |            |         |   ⏳    |
+| [Stamps.Cash](https://stamps.cash/)                                       |   `v1.0.3`    |   ✅    |            |         |         |
 | [SwiftFulcrum](https://github.com/58opals/SwiftFulcrum)                   |   `v1.0.3`    |         |            |         |   ⏳    |
 | [Taiwan Bitcoin Cash (台灣比特幣現金)](https://twbitcoin.cash/)           |   `v1.0.3`    |   ✅    |            |         |         |
 | [Tipb.ch](https://tipb.ch)                                                |   `v1.0.3`    |         |            |         |   ⏳    |
@@ -277,7 +277,7 @@ Responses from exchanges, miners, services, and other businesses.
 | [Antpool](https://www.antpool.com/)                            |   `v1.0.3`    |         |            |         |   ⏳    |
 | [Anycoin Direct](https://anycoindirect.eu/)                    |   `v1.0.3`    |         |            |         |   ⏳    |
 | [AnyHedge](https://anyhedge.com/)                              |   `v1.0.3`    |   ✅    |            |         |         |
-| [Aptissio](https://www.aptissio.com/)                          |   `v1.0.3`    |         |            |         |   ⏳    |
+| [Aptissio](https://www.aptissio.com/)                          |   `v1.0.3`    |   ✅    |            |         |         |
 | [APMEX](https://www.apmex.com/)                                |   `v1.0.3`    |         |            |         |   ⏳    |
 | [ArzPaya](https://arzpaya.com/)                                |   `v1.0.3`    |         |            |         |   ⏳    |
 | [AscendEX](https://ascendex.com/)                              |   `v1.0.3`    |         |            |         |   ⏳    |
@@ -624,6 +624,7 @@ The following articles have been published in support of this CHIP:
 - [Luke Pryor](https://x.com/thelukepryor): [Statement via x.com](https://x.com/thelukepryor/status/1964726679357767944) (September 7, 2025)
 - [minisatoshi](https://minisatoshi.cash/): [Statement via x.com](https://x.com/_minisatoshi/status/1965051871120195656) (September 8, 2025)
 - [General Protocols](https://generalprotocols.com): "[GP Statement on CHIPs and 2026 Activation](https://read.cash/@GeneralProtocols/gp-statement-on-chips-and-2026-activation-b59b43a1)" (September 8, 2025)
+- [Forward Financial](https://forwardfi.com/): [Statement via x.com](https://x.com/stevethurmond/status/1965174125145850334) (September 8, 2025)
 - [Jonas Lundqvist](https://jonaslundqvist.net/): [Endorsement for Bitcoin Cash 2026 CHIPs](https://jonaslundqvist.net/2025/09/13/endorsement-for-bitcoin-cash-2026-chips/) (September 13, 2025)
 - [ABLA](https://bitcoincashresearch.org/u/abla): [Statement via bitcoincashresearch.org](https://bitcoincashresearch.org/t/2026-layla-upgrade-lock-in-chip-endorsements-thread/1672/19) (September 16, 2025)
 - [Taiwan Bitcoin Cash (台灣比特幣現金)](https://twbitcoin.cash/): [Statement via x.com](https://x.com/twbitcoincash/status/1968707600218001771) (September 18, 2025)
@@ -631,7 +632,7 @@ The following articles have been published in support of this CHIP:
 - [Knuth](https://kth.cash/): [Statement via x.com](https://x.com/KnuthNode/status/1970470221979828411) (September 23, 2025)
 - [Fernando Pelliccioni](https://x.com/ferpelliccioni): [Statement via x.com](https://x.com/ferpelliccioni/status/1970466467121696771) (September 23, 2025)
 - [Kallisti.cash](https://kallisti.cash/): [Statement via bitcoincashresearch.org](https://bitcoincashresearch.org/t/2026-layla-upgrade-lock-in-chip-endorsements-thread/1672/23) (September 24, 2025)
-- [2qx](https://github.com/2qx): [Statement via vox.cash](https://vox.cash/pop#066d35df297b09d4f5df71736ce9254b65121c3e16640f34f20851c941c28f72) (September 30, 2025)
+- [2qx](https://github.com/2qx): [Statement via vox.cash](https://vox.cash/pop?postId=066d35df297b09d4f5df71736ce9254b65121c3e16640f34f20851c941c28f72) (September 30, 2025)
 
 The following statements have been submitted in support of this CHIP.
 
@@ -755,7 +756,7 @@ The following statements have been submitted in support of this CHIP.
 >
 > H1Ib/QFGUt3s6n9HhL0sK0JBdE277E5m4f+viiEx8of4G+nLnJrNohqXBZa4Du9zt6vxhPX17VLLs7Yz/BSMJj8=
 >
-> —<cite>[2qx](https://github.com/2qx), [awesomebitcoin.cash](https://awesomebitcoin.cash/), [Unspent](https://unspent.cash), [Unspent Phi](https://unspent.app), [Future Bitcoin Cash](https://futurebitcoin.cash), [vox.cash](https://vox.cash), [mainnet-js](https://github.com/mainnet-cash/mainnet-js) contributor <a href="https://vox.cash/pop#066d35df297b09d4f5df71736ce9254b65121c3e16640f34f20851c941c28f72">⧉</a></cite>
+> —<cite>[2qx](https://github.com/2qx), [awesomebitcoin.cash](https://awesomebitcoin.cash/), [Unspent](https://unspent.cash), [Unspent Phi](https://unspent.app), [Future Bitcoin Cash](https://futurebitcoin.cash), [vox.cash](https://vox.cash), [mainnet-js](https://github.com/mainnet-cash/mainnet-js) contributor <a href="https://vox.cash/pop?postId=066d35df297b09d4f5df71736ce9254b65121c3e16640f34f20851c941c28f72">⧉</a></cite>
 
 > Based on the simplifications this brings to smart contract development and the robust testing that has taken place I am for its activation in the May 2026 upgrade.
 >
@@ -798,6 +799,10 @@ The following statements have been submitted in support of this CHIP.
 > - [CHIP-2025-05 Bitwise (Commit a432a19)](https://github.com/bitjson/bch-bitwise/tree/a432a19bcbc597391d0f0a29ae62a902b575d1dd)
 >
 > —<cite>[General Protocols](https://generalprotocols.com) <a href="https://read.cash/@GeneralProtocols/gp-statement-on-chips-and-2026-activation-b59b43a1">⧉</a></cite>
+
+> The 2026 BCH CHIPs - Loops, Functions, P2S & Bitwise - referred to as the "Layla" upgrade, completely unleashes the smart-contract capabilities of #BitcoinCash, making it the single-most sophisticated, UTXO-based, smart-contract chain in existence. This really opens up Defi, the BCH Virtual Machine, and possibly some privacy features in the future, as well. For this reason and FWIW, I fully endorse the 2026 CHIPs being pushed on May 15th, 2026.
+>
+> —<cite>[Steve Thurmond](https://x.com/stevethurmond/), [Forward Financial, LLC](https://forwardfi.com/), [CashStamps](https://stamps.cash/) <a href="https://x.com/stevethurmond/status/1965174125145850334">⧉</a></cite>
 
 > Let’s go! Since everyone has defined the upcoming upgrades: P2S, Bitwise, Functions, and Bounded Loops. There’s no need to repeat them. I endorse all four CHIPs as well.
 >
