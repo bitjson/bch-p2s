@@ -107,7 +107,7 @@ The limit on maximum standard input bytecode length (A.K.A. `MAX_TX_IN_SCRIPT_SI
 
 ## Test Vectors
 
-This proposal includes [a suite of functional tests and benchmarks](./vmb_tests/) to verify the performance of all operations within virtual machine implementations.
+This proposal includes [a suite of functional tests and benchmarks](https://github.com/bitauth/vmb_tests/tree/08133da2a742b8ea0a6d5e34307e83721e83a687) to verify the performance of all operations within virtual machine implementations.
 
 ## Implementations
 
